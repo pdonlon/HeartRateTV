@@ -14,6 +14,9 @@
 		B6DBB78F2B84602900E9A2FD /* HeartRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB78E2B84602900E9A2FD /* HeartRateTests.swift */; };
 		B6DBB7992B84602900E9A2FD /* HeartRateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB7982B84602900E9A2FD /* HeartRateUITests.swift */; };
 		B6DBB79B2B84602900E9A2FD /* HeartRateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB79A2B84602900E9A2FD /* HeartRateUITestsLaunchTests.swift */; };
+		B6DBB7A82B85F98200E9A2FD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB7A72B85F98200E9A2FD /* Card.swift */; };
+		B6DBB7AA2B8675FC00E9A2FD /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB7A92B8675FC00E9A2FD /* CardData.swift */; };
+		B6DBB7AC2B8688BC00E9A2FD /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB7AB2B8688BC00E9A2FD /* NetworkUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		B6DBB7942B84602900E9A2FD /* HeartRateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartRateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DBB7982B84602900E9A2FD /* HeartRateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateUITests.swift; sourceTree = "<group>"; };
 		B6DBB79A2B84602900E9A2FD /* HeartRateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B6DBB7A72B85F98200E9A2FD /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		B6DBB7A92B8675FC00E9A2FD /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
+		B6DBB7AB2B8688BC00E9A2FD /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 			children = (
 				B6DBB77D2B84602800E9A2FD /* HeartRateApp.swift */,
 				B6DBB77F2B84602800E9A2FD /* ContentView.swift */,
+				B6DBB7AB2B8688BC00E9A2FD /* NetworkUtils.swift */,
+				B6DBB7A72B85F98200E9A2FD /* Card.swift */,
+				B6DBB7A92B8675FC00E9A2FD /* CardData.swift */,
 				B6DBB7812B84602900E9A2FD /* Assets.xcassets */,
 				B6DBB7832B84602900E9A2FD /* Preview Content */,
 			);
@@ -258,6 +267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6DBB7802B84602800E9A2FD /* ContentView.swift in Sources */,
+				B6DBB7AA2B8675FC00E9A2FD /* CardData.swift in Sources */,
+				B6DBB7AC2B8688BC00E9A2FD /* NetworkUtils.swift in Sources */,
+				B6DBB7A82B85F98200E9A2FD /* Card.swift in Sources */,
 				B6DBB77E2B84602800E9A2FD /* HeartRateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
