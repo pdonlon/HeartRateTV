@@ -15,14 +15,40 @@ import SwiftUI
 //]
 
 
-
+import Combine
 
 struct ContentView: View {
     
     @State var myCardData = [CardData]()
     @State var jsonUrl = "https://us-east.browsedns.net/data.json "
     
+    @State var showingSheet = false
+    @State var selectedCard: CardData?
+    
+    var timerPublisher: Timer.TimerPublisher
+    var timerSubscriber: AnyCancellable
+    
     init() {
+        // get a publisher from the system timer for every half second
+        timerPublisher = Timer.publish(every: 0.5, on: .main, in: .common)
+        
+        // hook up our subscriber to print on published time events
+        timerSubscriber = timerPublisher
+            .autoconnect()
+            .map({
+                // do network stuff, to pull latest data
+                let formatter = DateFormatter()
+                  formatter.dateFormat = "HH:mm:ss"
+                  
+                  return formatter.string(from: $0)
+            })
+            .sink(receiveValue: {
+                // actually update our UI or data
+                print("Current Time: \($0)")
+            })
+        
+        //  timerSubscriber.cancel()
+            
         refreshUrl()
     }
     
@@ -33,7 +59,7 @@ struct ContentView: View {
             let decoded = try decoder.decode([CardData].self, from: makeCall(jsonUrl))
             myCardData = decoded
         } catch {
-            print("Failed to decode JSON")
+            print("Error info: \(error)")
         }
     }
     
@@ -41,7 +67,10 @@ struct ContentView: View {
     var body: some View {
         VStack{
             HStack {
-                Text("Hello, world!")
+                if let _ = selectedCard {
+                    // make sure swiftui knows to redraw selectedcard
+                    // https://forums.developer.apple.com/forums/thread/652080
+                }
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
@@ -60,13 +89,23 @@ struct ContentView: View {
                     Text("Nothing found")
                 }
                 else {
-                    ForEach(myCardData, id: \.self) { card in
-                        Card(data: card)
+                    ForEach(myCardData, id: \.self) { data in
+                        Card(data: data, onSelect: {
+                            selectedCard = data
+                            showingSheet = true
+                        })
                     }
                 }
             }
             .padding()
         }
+        .sheet(isPresented: $showingSheet, content: {
+            if let card = selectedCard {
+                Text(card.title)
+            } else {
+                Text("Issue Occured")
+            }
+        })
     }
 }
 

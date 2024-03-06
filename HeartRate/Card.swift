@@ -8,12 +8,20 @@
 import Foundation
 import SwiftUI
 
+
 struct Card: View {
     
     var data: CardData
+    var onSelect: () -> Void
+    
+    init(data: CardData, onSelect: @escaping () -> Void) {
+        self.data = data
+        self.onSelect = onSelect
+    }
     
     var body: some View {
         Button(action: {
+            onSelect()
             print(data.title)
         }) {
             VStack {
@@ -28,10 +36,13 @@ struct Card: View {
                         ProgressView()
                     }
                 )
-                Text(data.title)
+                HStack {
+                    Text(data.title)
+                    CircularProgressView(progress: data.getPercentMaxHeartRate())
+                }
             }
 //            .background(Color.blue)
-            .frame(width: 200, height: 200)
+            .frame(width: 250, height: 200)
         }
     }
     
