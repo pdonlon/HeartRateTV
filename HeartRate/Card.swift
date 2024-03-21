@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import CachedAsyncImage
 
 struct Card: View {
     
@@ -25,7 +25,7 @@ struct Card: View {
             print(data.title)
         }) {
             VStack {
-                AsyncImage(
+                CachedAsyncImage(
                     url: URL(string: data.thumbnail),
                     content: { image in
                         image.resizable()
@@ -38,7 +38,11 @@ struct Card: View {
                 )
                 HStack {
                     Text(data.title)
-                    CircularProgressView(progress: data.getPercentMaxHeartRate())
+                    VStack {
+                        CircularProgressView(progress: data.getPercentMaxHeartRate())
+                        Text("\(data.bpm)")
+                    }
+                    
                 }
             }
 //            .background(Color.blue)

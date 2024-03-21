@@ -18,38 +18,15 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    
-    @State var myCardData = [CardData]()
-    @State var jsonUrl = "https://us-east.browsedns.net/data.json "
+    //    @State var jsonUrl = "http://switch-gba.browsedns.net/"
+    @State var jsonUrl = "http://192.168.0.14:8080"
     
     @State var showingSheet = false
     @State var selectedCard: CardData?
-    
-    var timerPublisher: Timer.TimerPublisher
-    var timerSubscriber: AnyCancellable
+    @StateObject var viewModel = ObservableCardModel()
     
     init() {
-        // get a publisher from the system timer for every half second
-        timerPublisher = Timer.publish(every: 0.5, on: .main, in: .common)
-        
-        // hook up our subscriber to print on published time events
-        timerSubscriber = timerPublisher
-            .autoconnect()
-            .map({
-                // do network stuff, to pull latest data
-                let formatter = DateFormatter()
-                  formatter.dateFormat = "HH:mm:ss"
-                  
-                  return formatter.string(from: $0)
-            })
-            .sink(receiveValue: {
-                // actually update our UI or data
-                print("Current Time: \($0)")
-            })
-        
-        //  timerSubscriber.cancel()
-            
-        refreshUrl()
+                
     }
     
     func refreshUrl() {
@@ -57,7 +34,7 @@ struct ContentView: View {
         
         do {
             let decoded = try decoder.decode([CardData].self, from: makeCall(jsonUrl))
-            myCardData = decoded
+//            myCardData = decoded
         } catch {
             print("Error info: \(error)")
         }
@@ -76,20 +53,21 @@ struct ContentView: View {
                     .foregroundStyle(.tint)
             }
             HStack {
-                if (myCardData.isEmpty) {
-                    Button {
-                        jsonUrl = "https://us-east.browsedns.net/data.json"
-                        refreshUrl()
-                    } label: {
-                        Image(systemName: "arrow.clockwise.circle")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-                    }
+                Button {
+//                    jsonUrl = "http://switch-gba.browsedns.net/"
+                    jsonUrl = "http://192.168.0.14:8080"
+                    refreshUrl()
+                } label: {
+                    Image(systemName: "arrow.clockwise.circle")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                }
+                if (viewModel.myCardData.isEmpty) {
 
                     Text("Nothing found")
                 }
                 else {
-                    ForEach(myCardData, id: \.self) { data in
+                    ForEach(viewModel.myCardData, id: \.self) { data in
                         Card(data: data, onSelect: {
                             selectedCard = data
                             showingSheet = true
@@ -98,6 +76,9 @@ struct ContentView: View {
                 }
             }
             .padding()
+        }
+        .onAppear() {
+            viewModel.fetchData(every: 0.1)
         }
         .sheet(isPresented: $showingSheet, content: {
             if let card = selectedCard {

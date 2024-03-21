@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CardData : Hashable, Codable {
+class CardData : Hashable, Codable, Identifiable{
     
     // Heart data TODO
     var title: String
@@ -16,7 +16,7 @@ class CardData : Hashable, Codable {
     var age: Int
     
     static func == (lhs: CardData, rhs: CardData) -> Bool {
-        return (lhs.title == rhs.title) && (lhs.thumbnail == rhs.thumbnail)
+        return (lhs.title == rhs.title) && (lhs.thumbnail == rhs.thumbnail) && (lhs.bpm == rhs.bpm) && lhs.age == rhs.age
     }
     
     func hash(into hasher: inout Hasher) {

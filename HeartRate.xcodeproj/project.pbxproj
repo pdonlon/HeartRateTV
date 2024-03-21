@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B652CCA42B97F24D0055C4FB /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B652CCA32B97F24D0055C4FB /* CircleProgressView.swift */; };
+		B652CCA72B991DE00055C4FB /* ObservableCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B652CCA62B991DE00055C4FB /* ObservableCardModel.swift */; };
+		B652CCAA2B9922410055C4FB /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = B652CCA92B9922410055C4FB /* CachedAsyncImage */; };
 		B6DBB77E2B84602800E9A2FD /* HeartRateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB77D2B84602800E9A2FD /* HeartRateApp.swift */; };
 		B6DBB7802B84602800E9A2FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBB77F2B84602800E9A2FD /* ContentView.swift */; };
 		B6DBB7822B84602900E9A2FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6DBB7812B84602900E9A2FD /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		B652CCA32B97F24D0055C4FB /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		B652CCA52B9915170055C4FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B652CCA62B991DE00055C4FB /* ObservableCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableCardModel.swift; sourceTree = "<group>"; };
 		B6DBB77A2B84602800E9A2FD /* HeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DBB77D2B84602800E9A2FD /* HeartRateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateApp.swift; sourceTree = "<group>"; };
 		B6DBB77F2B84602800E9A2FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B652CCAA2B9922410055C4FB /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,8 +107,10 @@
 		B6DBB77C2B84602800E9A2FD /* HeartRate */ = {
 			isa = PBXGroup;
 			children = (
+				B652CCA52B9915170055C4FB /* Info.plist */,
 				B6DBB77D2B84602800E9A2FD /* HeartRateApp.swift */,
 				B6DBB77F2B84602800E9A2FD /* ContentView.swift */,
+				B652CCA62B991DE00055C4FB /* ObservableCardModel.swift */,
 				B6DBB7AB2B8688BC00E9A2FD /* NetworkUtils.swift */,
 				B6DBB7A72B85F98200E9A2FD /* Card.swift */,
 				B6DBB7A92B8675FC00E9A2FD /* CardData.swift */,
@@ -155,6 +162,9 @@
 			dependencies = (
 			);
 			name = HeartRate;
+			packageProductDependencies = (
+				B652CCA92B9922410055C4FB /* CachedAsyncImage */,
+			);
 			productName = HeartRate;
 			productReference = B6DBB77A2B84602800E9A2FD /* HeartRate.app */;
 			productType = "com.apple.product-type.application";
@@ -227,6 +237,9 @@
 				Base,
 			);
 			mainGroup = B6DBB7712B84602800E9A2FD;
+			packageReferences = (
+				B652CCA82B9922410055C4FB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = B6DBB77B2B84602800E9A2FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,6 +285,7 @@
 				B6DBB7802B84602800E9A2FD /* ContentView.swift in Sources */,
 				B6DBB7AA2B8675FC00E9A2FD /* CardData.swift in Sources */,
 				B6DBB7AC2B8688BC00E9A2FD /* NetworkUtils.swift in Sources */,
+				B652CCA72B991DE00055C4FB /* ObservableCardModel.swift in Sources */,
 				B6DBB7A82B85F98200E9A2FD /* Card.swift in Sources */,
 				B6DBB77E2B84602800E9A2FD /* HeartRateApp.swift in Sources */,
 				B652CCA42B97F24D0055C4FB /* CircleProgressView.swift in Sources */,
@@ -442,6 +456,7 @@
 				DEVELOPMENT_TEAM = 3H636RK446;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HeartRate/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -471,6 +486,7 @@
 				DEVELOPMENT_TEAM = 3H636RK446;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HeartRate/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,6 +620,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B652CCA82B9922410055C4FB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B652CCA92B9922410055C4FB /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B652CCA82B9922410055C4FB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6DBB7722B84602800E9A2FD /* Project object */;
 }
